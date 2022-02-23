@@ -1,0 +1,35 @@
+[tool.poetry]
+
+# Change this to the name of your own extension
+name = "skybrush-ext-template"
+version = "1.0.0"
+description = "Template project for Skybrush Server extension modules"
+authors = ["Tamas Nepusz <ntamas@gmail.com>"]
+license = "MIT"
+packages = [
+  # Change this to the name of the folder in src/ containing your extension
+  { include = "skybrush_ext_template", from = "src" }
+]
+
+[[tool.poetry.source]]
+name = "collmot"
+url = "https://pypi.collmot.com/simple/"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.dev-dependencies]
+flockwave-server = "^1.28.0"
+
+[tool.poetry.plugins]
+
+[tool.poetry.plugins."skybrush.server.ext"]
+# Change this to the name of your own extension
+skybrush_ext_template = "skybrush_ext_template"
+
+[tool.poetry.scripts]
+dev = "python3 -m flockwave.server.launcher -c skybrushd.jsonc"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
