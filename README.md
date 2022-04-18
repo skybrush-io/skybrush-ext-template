@@ -50,3 +50,20 @@ one of your own choosing:
 Additional modules that your extension depends on should be added with
 `poetry add`. In general, use the standard tools provided by `poetry` for
 dependency management.
+
+When developing your own extension, you will need to be able to start Skybrush
+Server and load your extension at startup. This can be achieved with a custom
+configuration file. This repository contains an example file named
+`skybrush.jsonc` that you may use as a starting point. To start the server,
+pass the name of the configuration file to the startup module as follows:
+
+```sh
+$ poetry run skybrushd -c skybrushd.jsonc
+```
+
+or, if you do not want to use Poetry, like this:
+
+```sh
+$ python3 -m flockwave.server.launcher -c skybrushd.jsonc
+```
+

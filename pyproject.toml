@@ -24,11 +24,10 @@ flockwave-server = "^1.28.0"
 [tool.poetry.plugins]
 
 [tool.poetry.plugins."skybrush.server.ext"]
-# Change this to the name of your own extension
+# Change the key below to the name of the extension that you want to use in
+# configuration files, and the value to the name of the Python module that
+# contains the extension code
 skybrush_ext_template = "skybrush_ext_template"
-
-[tool.poetry.scripts]
-dev = "python3 -m flockwave.server.launcher -c skybrushd.jsonc"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
