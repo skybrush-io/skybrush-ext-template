@@ -12,11 +12,6 @@ packages = [
 ]
 
 [[tool.poetry.source]]
-name = "collmot"
-url = "https://pypi.collmot.com/simple/"
-secondary = true
-
-[[tool.poetry.source]]
 name = "fury"
 url = "https://pypi.fury.io/skybrush/"
 secondary = true
@@ -25,7 +20,7 @@ secondary = true
 python = "^3.8"
 
 [tool.poetry.dev-dependencies]
-flockwave-server = "^1.28.0"
+flockwave-server = { git = "https://github.com/skybrush-io/skybrush-server", branch = "main" }
 
 [tool.poetry.plugins]
 
@@ -33,7 +28,10 @@ flockwave-server = "^1.28.0"
 # Change the key below to the name of the extension that you want to use in
 # configuration files, and the value to the name of the Python module that
 # contains the extension code
-skybrush_ext_template = "skybrush_ext_template"
+template = "skybrush_ext_template"
+
+[tool.poetry.scripts]
+skybrushd = "flockwave.server.launcher:start"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

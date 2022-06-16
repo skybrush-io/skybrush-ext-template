@@ -25,6 +25,8 @@ class ExtensionTemplate(Extension):
                 available as ``self.log``.
         """
         self.log.info("Extension is now running.")
-        await sleep(5)
+        await sleep(2)
+        self.log.warn(configuration.get("bacon"))
+        await sleep(3)
         self.log.info("Five seconds have passed, exiting.")
 
