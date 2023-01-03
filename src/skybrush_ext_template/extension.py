@@ -29,4 +29,3 @@ class ExtensionTemplate(Extension):
         self.log.warn(configuration.get("bacon"))
         await sleep(3)
         self.log.info("Five seconds have passed, exiting.")
-
