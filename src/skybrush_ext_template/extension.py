@@ -1,6 +1,15 @@
+from __future__ import annotations
+
+from logging import Logger
 from trio import sleep
+from typing import TYPE_CHECKING
 
 from flockwave.server.ext.base import Extension
+
+if TYPE_CHECKING:
+    from flockwave.ext.base import Configuration
+    from flockwave.server.app import SkybrushServer
+
 
 __all__ = ("ExtensionTemplate", )
 
@@ -8,7 +17,9 @@ __all__ = ("ExtensionTemplate", )
 class ExtensionTemplate(Extension):
     """Template for Skybrush Server extensions."""
 
-    async def run(self, app, configuration, logger):
+    async def run(
+        self, app: SkybrushServer, configuration: Configuration, logger: Logger
+    ):
         """This function is called when the extension was loaded.
 
         The signature of this function is flexible; you may use zero, one, two
@@ -24,8 +35,8 @@ class ExtensionTemplate(Extension):
             logger: Python logger object that the extension may use. Also
                 available as ``self.log``.
         """
-        self.log.info("Extension is now running.")
+        logger.info("Extension is now running.")
         await sleep(2)
-        self.log.warn(configuration.get("bacon"))
+        logger.warn(configuration.get("bacon"))
         await sleep(3)
-        self.log.info("Five seconds have passed, exiting.")
+        logger.info("Five seconds have passed, exiting.")
