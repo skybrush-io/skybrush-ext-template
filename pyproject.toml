@@ -8,9 +8,7 @@ license = "MIT"
 requires-python = ">=3.10"
 
 [dependency-groups]
-dev = [
-  "flockwave-server @ git+https://github.com/skybrush-io/skybrush-server#branch=main",
-]
+dev = ["flockwave-server>=2.32.1"]
 
 [project.entry-points."skybrush.server.ext"]
 # Change the key below to the name of the extension that you want to use in
@@ -29,6 +27,9 @@ select = ["B", "C", "E", "F", "W"]
 [[tool.uv.index]]
 name = "fury"
 url = "https://pypi.fury.io/skybrush/"
+
+[tool.uv.sources]
+flockwave-server = { index = "fury" }
 
 [build-system]
 requires = ["uv_build>=0.7.18"]
