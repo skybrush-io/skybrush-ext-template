@@ -10,18 +10,15 @@ Installation
 
 1. Check out this repository using git.
 
-2. Install [`poetry`](https://python-poetry.org) if you haven't done so yet;
-   `poetry` is a tool that allows you to install Skybrush Server and the
+2. Install [`uv`](https://docs.astral.sh/uv/) if you haven't done so yet;
+   `uv` is a tool that allows you to install Skybrush Server and the
    extension you are working on in a completely isolated virtual environment.
 
-3. Run `poetry install`; this will create a virtual environment and install
+3. Run `uv sync`; this will create a virtual environment and install
    Skybrush Server with all required dependencies in it, as well as the code
    of the extension.
 
-4. Run `poetry shell` to open a shell associated to the virtual environment
-   that you have just created.
-
-5. In the shell prompt, type `skybrushd -c skybrushd.jsonc` to start the server
+4. Run `uv run skybrushd -c skybrushd.jsonc` to start the server
    with a configuration file that loads the extension being developed.
 
 Developing your own extension
@@ -48,7 +45,7 @@ one of your own choosing:
    `skybrush_ext_template` entry inside `EXTENSIONS`).
 
 Additional modules that your extension depends on should be added with
-`poetry add`. In general, use the standard tools provided by `poetry` for
+`uv add`. In general, use the standard tools provided by `uv` for
 dependency management.
 
 When developing your own extension, you will need to be able to start Skybrush
@@ -58,13 +55,14 @@ configuration file. This repository contains an example file named
 pass the name of the configuration file to the startup module as follows:
 
 ```sh
-$ poetry run skybrushd -c skybrushd.jsonc
+uv run skybrushd -c skybrushd.jsonc
 ```
 
-or, if you do not want to use Poetry, like this:
+or, if you do not want to use `uv`, like this (after activating the virtual
+environment in which Skybrush Server is installed):
 
 ```sh
-$ python3 -m flockwave.server.launcher -c skybrushd.jsonc
+python3 -m flockwave.server.launcher -c skybrushd.jsonc
 ```
 
 Anatomy of an extension
@@ -185,4 +183,4 @@ Getting help
 
 If you need more information about developing extensions for Skybrush Server,
 get in touch with our dev team on our public Discord server at
-https://skybrush.io/r/discord.
+<https://skybrush.io/r/discord>.
