@@ -8,7 +8,7 @@ license = "MIT"
 requires-python = ">=3.10"
 
 [dependency-groups]
-dev = ["flockwave-server>=2.32.1"]
+dev = ["flockwave-server>=2.47.0"]
 
 [project.entry-points."skybrush.server.ext"]
 # Change the key below to the name of the extension that you want to use in
@@ -20,9 +20,19 @@ template = "skybrush_ext_template"
 skybrushd = "flockwave.server.launcher:start"
 
 [tool.ruff]
-ignore = ["B905", "C901", "E402", "E501"]
-line-length = 80
-select = ["B", "C", "E", "F", "W"]
+lint.ignore = [
+  "B905", # zip-without-explicit-strict
+  "S101", # assert
+]
+lint.select = [
+  "B", # flake8-bugbear
+  "C", # flake8-comprehensions
+  "E", # pycodestyle errors
+  "F", # pyflakes
+  "I", # isort
+  "S", # flake8-bandit
+  "W", # pycodestyle warnings
+]
 
 [[tool.uv.index]]
 name = "fury"
@@ -32,5 +42,5 @@ url = "https://pypi.fury.io/skybrush/"
 flockwave-server = { index = "fury" }
 
 [build-system]
-requires = ["uv_build>=0.7.18"]
+requires = ["uv_build>=0.11,<0.12"]
 build-backend = "uv_build"

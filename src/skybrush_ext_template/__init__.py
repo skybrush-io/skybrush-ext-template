@@ -20,7 +20,7 @@ instance to store state.
 
 from .extension import ExtensionTemplate as construct
 
-__all__ = ("construct", )
+__all__ = ("construct",)
 
 description = "Template for Skybrush Server extensions"
 """The description of the extension that appears on the Skybrush server UI"""

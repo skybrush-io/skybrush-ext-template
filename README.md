@@ -18,7 +18,7 @@ Installation
    Skybrush Server with all required dependencies in it, as well as the code
    of the extension.
 
-4. Run `uv run skybrushd -c skybrushd.jsonc` to start the server
+4. Run `uv run skybrushd -c skybrushd.toml` to start the server
    with a configuration file that loads the extension being developed.
 
 Developing your own extension
@@ -51,18 +51,18 @@ dependency management.
 When developing your own extension, you will need to be able to start Skybrush
 Server and load your extension at startup. This can be achieved with a custom
 configuration file. This repository contains an example file named
-`skybrush.jsonc` that you may use as a starting point. To start the server,
+`skybrush.toml` that you may use as a starting point. To start the server,
 pass the name of the configuration file to the startup module as follows:
 
 ```sh
-uv run skybrushd -c skybrushd.jsonc
+uv run skybrushd -c skybrushd.toml
 ```
 
 or, if you do not want to use `uv`, like this (after activating the virtual
 environment in which Skybrush Server is installed):
 
 ```sh
-python3 -m flockwave.server.launcher -c skybrushd.jsonc
+python3 -m flockwave.server.launcher -c skybrushd.toml
 ```
 
 Anatomy of an extension
@@ -76,7 +76,7 @@ when the extension is loaded. The function receives three parameters:
   `flockwave.server.app.SkybrushServer`.
 
 - `configuration`, which is a dictionary holding the keys and values specified
-  in the configuration of the extension in `sktybrushd.jsonc`
+  in the configuration of the extension in `sktybrushd.toml`
 
 - `logger`, which is a standard Python logger object (from the `logging` module)
   that you can use from your extension to print into the server logs.

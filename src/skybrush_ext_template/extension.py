@@ -1,17 +1,17 @@
 from __future__ import annotations
 
 from logging import Logger
-from trio import sleep
 from typing import TYPE_CHECKING
 
 from flockwave.server.ext.base import Extension
+from trio import sleep
 
 if TYPE_CHECKING:
     from flockwave.ext.base import Configuration
     from flockwave.server.app import SkybrushServer
 
 
-__all__ = ("ExtensionTemplate", )
+__all__ = ("ExtensionTemplate",)
 
 
 class ExtensionTemplate(Extension):
@@ -37,6 +37,6 @@ class ExtensionTemplate(Extension):
         """
         logger.info("Extension is now running.")
         await sleep(2)
-        logger.warn(configuration.get("bacon"))
+        logger.warning(configuration.get("bacon"))
         await sleep(3)
         logger.info("Five seconds have passed, exiting.")
