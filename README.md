@@ -18,7 +18,7 @@ Installation
    Skybrush Server with all required dependencies in it, as well as the code
    of the extension.
 
-4. Run `uv run skybrushd -c skybrushd.toml` to start the server
+4. Run `uv run skybrushd -c skybrush.toml` to start the server
    with a configuration file that loads the extension being developed.
 
 Developing your own extension
@@ -40,7 +40,7 @@ one of your own choosing:
 
 4. Rename `src/skybrush_ext_template` to the name of your extension.
 
-5. Open `skybrushd.json` and replace `skybrush_ext_template` with the name of
+5. Open `skybrush.toml` and replace `skybrush_ext_template` with the name of
    your extension. Optionally, remove the configuration keys (but keep the
    `skybrush_ext_template` entry inside `EXTENSIONS`).
 
@@ -55,14 +55,27 @@ configuration file. This repository contains an example file named
 pass the name of the configuration file to the startup module as follows:
 
 ```sh
-uv run skybrushd -c skybrushd.toml
+uv run skybrushd -c skybrush.toml
 ```
 
 or, if you do not want to use `uv`, like this (after activating the virtual
 environment in which Skybrush Server is installed):
 
 ```sh
-python3 -m flockwave.server.launcher -c skybrushd.toml
+python3 -m flockwave.server.launcher -c skybrush.toml
+```
+
+In fact, the server picks up the configuration file automatically if it is named
+`skybrush.toml` and it is in the current folder so you can also just do this:
+
+```sh
+uv run skybrushd
+```
+
+or
+
+```sh
+python3 -m flockwave.server.launcher
 ```
 
 Anatomy of an extension
@@ -76,7 +89,7 @@ when the extension is loaded. The function receives three parameters:
   `flockwave.server.app.SkybrushServer`.
 
 - `configuration`, which is a dictionary holding the keys and values specified
-  in the configuration of the extension in `sktybrushd.toml`
+  in the configuration of the extension in `skybrush.toml`
 
 - `logger`, which is a standard Python logger object (from the `logging` module)
   that you can use from your extension to print into the server logs.
