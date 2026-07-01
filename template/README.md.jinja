@@ -1,0 +1,16 @@
+# {{ extension_description }}
+
+## Installation
+
+1. Check out this repository using git.
+
+2. Install [`uv`](https://docs.astral.sh/uv/) if you haven't done so yet;
+   `uv` is a tool that allows you to install Skybrush Server and the
+   extension you are working on in a completely isolated virtual environment.
+
+3. Run `uv sync`; this will create a virtual environment and install
+   Skybrush Server with all required dependencies in it, as well as the code
+   of the extension.
+
+4. Run `uv run skybrushd` to start the server. It should automatically pick up
+   the configuration file named `skybrush.toml` and load the extension.

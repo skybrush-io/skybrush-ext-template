@@ -11,11 +11,11 @@ if TYPE_CHECKING:
     from flockwave.server.app import SkybrushServer
 
 
-__all__ = ("ExtensionTemplate",)
+__all__ = ("{{ extension_class_name }}",)
 
 
-class ExtensionTemplate(Extension):
-    """Template for Skybrush Server extensions."""
+class {{ extension_class_name }}(Extension):
+    """{{ extension_description }}"""
 
     async def run(
         self, app: SkybrushServer, configuration: Configuration, logger: Logger

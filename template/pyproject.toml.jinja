@@ -1,11 +1,11 @@
 [project]
-# Change this to the name of your own extension
-name = "skybrush-ext-template"
+name = "{{ module_name }}"
 version = "1.0.0"
-description = "Template project for Skybrush Server extension modules"
-authors = [{ name = "Tamas Nepusz", email = "ntamas@gmail.com" }]
+description = "{{ extension_description }}"
+authors = [{ name = "{{ user_name }}", email = "{{ user_email }}" }]
 license = "MIT"
 requires-python = ">=3.10"
+dependencies = []
 
 [dependency-groups]
 dev = ["flockwave-server>=2.47.0"]
@@ -14,7 +14,7 @@ dev = ["flockwave-server>=2.47.0"]
 # Change the key below to the name of the extension that you want to use in
 # configuration files, and the value to the name of the Python module that
 # contains the extension code
-template = "skybrush_ext_template"
+{{ extension_name }} = "{{ module_name }}"
 
 [project.scripts]
 skybrushd = "flockwave.server.launcher:start"
