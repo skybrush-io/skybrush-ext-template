@@ -1,12 +1,10 @@
-Template extension for Skybrush Server
-======================================
+# Template extension for Skybrush Server
 
 This repository illustrates how to start developing an extension for Skybrush
 Server in an isolated manner. You can use this repository as a starting point
 for developing your own extensions.
 
-Installation
-------------
+## Installation
 
 1. Check out this repository using git.
 
@@ -21,8 +19,7 @@ Installation
 4. Run `uv run skybrushd -c skybrush.toml` to start the server
    with a configuration file that loads the extension being developed.
 
-Developing your own extension
------------------------------
+## Developing your own extension
 
 In order to start developing your own extension, you need to modify the
 repository a bit to rename the extension from `skybrush_ext_template` to
@@ -78,8 +75,24 @@ or
 python3 -m flockwave.server.launcher
 ```
 
-Anatomy of an extension
------------------------
+### Optional goodies
+
+The default repository layout also pre-configures `ruff` (linter and formatter)
+and `ty` (type checker) to the conventions used in Skybrush Server. You can run these tools with the following commands:
+
+```sh
+uv run ruff check
+uv run ty check
+```
+
+These are not mandatory; feel free to use them if you want to or remove them if you
+use other conventions.
+
+We also provide a set of pre-commit hooks in `.pre-commit-config.yaml`. You can
+install `prek` and then run them with `prek run --all-files`. Again, you do not need
+to use them if you do not want to, but they are provided for your convenience.
+
+## Anatomy of an extension
 
 A Skybrush extension is usually a class derived from the `Extension` base
 class, with an asynchronous `run()` method that gets invoked by the server
@@ -142,8 +155,7 @@ class MyExtension(Extension):
          self.run_in_background(self.second_task, logger)
 ```
 
-Extension metadata and dependencies
------------------------------------
+## Extension metadata and dependencies
 
 Extension metadata (such as its description, configuration schema and so on)
 and the list of other extensions that the extension depends on must be listed
@@ -151,8 +163,7 @@ in the `__init__.py` file of the extension in top-level variables named
 `description`, `schema`, `dependencies` and so on. Refer to the sample
 `__init__.py` file provided in this repository for more information.
 
-Accessing core server components from an extension
---------------------------------------------------
+## Accessing core server components from an extension
 
 Typically you will need to access other parts of the server from an extension
 in order to do something useful. You should explore the API offered by the
@@ -191,8 +202,7 @@ available to you; the most frequently used properties and methods of the
   from the `flockwave.server.model.UAV` class, or `None` if the UAV with the
   given ID is not registered in the app.
 
-Getting help
-------------
+## Getting help
 
 If you need more information about developing extensions for Skybrush Server,
 get in touch with our dev team on our public Discord server at
