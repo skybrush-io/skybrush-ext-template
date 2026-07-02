@@ -165,24 +165,6 @@ available to you; the most frequently used properties and methods of the
   from the `flockwave.server.model.UAV` class, or `None` if the UAV with the
   given ID is not registered in the app.
 
-## Optional goodies
-
-The default repository layout also pre-configures `ruff` (linter and formatter)
-and `ty` (type checker) to the conventions used in Skybrush Server. You can run these
-tools with the following commands:
-
-```sh
-uv run ruff check
-uv run ty check
-```
-
-These are not mandatory; feel free to use them if you want to or remove them if you
-use other conventions.
-
-We also provide a set of pre-commit hooks in `.pre-commit-config.yaml`. You can
-install `prek` and then run them with `prek run --all-files`. Again, you do not need
-to use them if you do not want to, but they are provided for your convenience.
-
 ## Getting help
 
 If you need more information about developing extensions for Skybrush Server,
