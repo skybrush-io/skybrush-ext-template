@@ -7,8 +7,8 @@ from flockwave.server.ext.base import Extension
 from trio import sleep
 
 if TYPE_CHECKING:
-    from flockwave.ext.base import Configuration
     from flockwave.server.app import SkybrushServer
+    from .config import {{ extension_class_name }}Config
 
 
 __all__ = ("{{ extension_class_name }}",)
@@ -18,7 +18,7 @@ class {{ extension_class_name }}(Extension):
     """{{ extension_description }}"""
 
     async def run(
-        self, app: SkybrushServer, configuration: Configuration, logger: Logger
+        self, app: SkybrushServer, configuration: {{ extension_class_name }}Config, logger: Logger
     ):
         """This function is called when the extension was loaded.
 
@@ -37,6 +37,6 @@ class {{ extension_class_name }}(Extension):
         """
         logger.info("Extension is now running.")
         await sleep(2)
-        logger.warning(configuration.get("bacon"))
+        logger.warning(f"Serving {configuration.bacon} bacon")
         await sleep(3)
         logger.info("Five seconds have passed, exiting.")

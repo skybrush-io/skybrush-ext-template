@@ -17,6 +17,7 @@
 # latter is preferred for more complex extensions as they can use the constructed
 # instance to store state.
 
+from .config import {{ extension_class_name }}Config as schema
 from .extension import {{ extension_class_name }} as construct
 
 __all__ = ("construct",)
@@ -34,17 +35,4 @@ string.
 
 Tags typically have no semantic meaning, but they are useful to organize
 extensions into categories.
-"""
-
-schema = {}
-"""A JSON Schema description of the configuration object of the extension.
-Refer to https://json-schema.org for more details, and take a look at a few
-real Skybrush Server extensions for inspiration.
-
-When omitted, the Skybrush server web UI will provide a JSON editor where you
-can enter a JSON object directly. When provided, the schema will be used to
-generate the configuration form of the extension in the Skybrush server web UI.
-
-You may also provide a ``get_schema()`` function instead of the schema itself
-if the schema has to be generated at runtime.
 """

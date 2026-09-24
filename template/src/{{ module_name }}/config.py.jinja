@@ -1,0 +1,13 @@
+from pydantic import BaseModel, Field
+
+__all__ = ("{{ extension_class_name }}Config",)
+
+
+class {{ extension_class_name }}Config(BaseModel):
+    """Configuration model for the extension."""
+
+    # Add your configuration fields here, for example:
+    bacon: str = Field(
+        default="crispy",
+        description="The type of bacon to use in the extension.",
+    )
