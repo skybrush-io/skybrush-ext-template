@@ -8,6 +8,7 @@ from trio import sleep
 
 if TYPE_CHECKING:
     from flockwave.server.app import SkybrushServer
+
     from .config import {{ extension_class_name }}Config
 
 
@@ -18,7 +19,10 @@ class {{ extension_class_name }}(Extension):
     """{{ extension_description }}"""
 
     async def run(
-        self, app: SkybrushServer, configuration: {{ extension_class_name }}Config, logger: Logger
+        self,
+        app: SkybrushServer,
+        configuration: {{ extension_class_name }}Config,
+        logger: Logger
     ):
         """This function is called when the extension was loaded.
 
